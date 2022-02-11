@@ -1,10 +1,10 @@
 
 Мессенджер sprint_1
 
-Даный проект является мессенджером.
+Данный учебный проект является мессенджером.
 
 Для работы на ДЕВ испольуем:
-npm run dev -запускает на dev сервере
+npm run dev - запускает на dev сервере
 
 ## Установка
 
@@ -18,8 +18,7 @@ npm run start - запускаем на сервере 3000
 ### Ссылка на фигму
 https://www.figma.com/file/YjAqjf6YOX2L465TBD7wlh/ypsprint1?node-id=0%3A1
 
-### Ссылка на фигму
+### Ссылка на netlify
 https://objective-bassi-d7a435.netlify.app
-
 
 
