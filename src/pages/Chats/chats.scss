@@ -1,7 +1,7 @@
 @import "./../../../configs/index.css";
 
 body {
-  background-color: var(--bodyColor);
+  background-color: var(--darkGray);
 }
 .chat-wrapper {
   display: flex;
@@ -11,12 +11,12 @@ body {
 .chats {
   width: 30%;
   height: 100vh;
-  background-color: var(--vldFormColor);
+  background-color: var(--lightGray);
 }
 
 .one-chat {
   height: 10%;
-  background-color: rgba(220 221, 225);
+  background-color: rgba(220, 221, 225);
   border: 1px solid #000000;
   border-radius: 0.25rem;
   padding: 5px;
@@ -61,7 +61,7 @@ body {
   font-size: 1rem;
   font-weight: 400;
   line-height: 1.5;
-  background-color: var(--buttonColor);
+  background-color: var(--darkBlue);
   background-clip: padding-box;
   border: 1px solid #000000;
   border-radius: 0.25rem;
