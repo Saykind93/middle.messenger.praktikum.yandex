@@ -1,21 +1,13 @@
-{{!--
----
+<head>
+  <title>Ошибка 404</title>
+  <link rel="stylesheet" href="./error404.css" />
 
-stylesheets:
-- ./auth.css
-
-scripts:
-- ./index.js
---- --}}
-
-
+</head>
 
 <main>
-<div class="container">
-  <div class="error-number">404</div>
-  <div class="error-answer">Не туда попали</div>
-  <button class="val-btn"><a href="./../Error5/error5.hbs">Назад к чатам</a></button>
-</div>
+  <div class="container">
+    <div class="error-number">404</div>
+    <div class="error-answer">Не туда попали</div>
+    {{> button name="Назад к чатам" textlink="./../Error5/error5.hbs"}}
+  </div>
 </main>
-<link rel="stylesheet" href="./error404.css">
-

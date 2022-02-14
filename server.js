@@ -1,15 +1,13 @@
-const express = require('express')
+require("dotenv").config();
+const express = require("express");
 
-const app = express()
-const PORT = 3000
-app.use(express.static(__dirname + '/dist'))
-app.use(express.static(__dirname))
+const app = express();
+app.use(express.static(__dirname + "/dist"));
 
-app.listen(PORT, function() {
-  console.log(`Мой сервер на порт номер: ${PORT}`, __dirname)
-
-
-})
-
-
+app.listen(process.env.PORT || 3000, function () {
+  console.log(
+    `Мой сервер на порт номер: ${process.env.PORT || 3000}`,
+    __dirname
+  );
+});
 

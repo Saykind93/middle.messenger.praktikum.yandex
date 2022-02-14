@@ -1,24 +1,20 @@
+<head>
+  <title>Регистрация</title>
+  <link rel="stylesheet" href="./registry.css" />
+
+</head>
 <main>
   <div class="container">
     <form class="validate-form">
-      <input class="val-input" type="text" name="first_name">
-      <input class="val-input" type="text" name="second_name">
-
-      <input class="val-input" type="text" name="login">
-
-      <input class="val-input" type="text" name="email">
-
-      <input class="val-input" type="text" name="password">
-
-      <input class="val-input" type="text" name="phone">
-      <button class="val-btn"><a href="./../Chats/chats.hbs">Registration</a></button>
-
+      <input class="val-input" type="text" name="first_name" />
+      <input class="val-input" type="text" name="second_name" />
+      <input class="val-input" type="text" name="login" />
+      <input class="val-input" type="text" name="email" />
+      <input class="val-input" type="text" name="password" />
+      <input class="val-input" type="text" name="phone" />
+      {{> button name="Registration" textlink="./../Chats/chats.hbs"}}
     </form>
-
-
 
   </div>
 
-
 </main>
-<link rel="stylesheet" href="./registry.css">

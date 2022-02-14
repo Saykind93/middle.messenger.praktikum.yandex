@@ -1,9 +1,11 @@
+@import "./../../../configs/index.css";
+
 body {
-  background-color: rgba(120, 129, 153);
+  background-color: var(--bodyColor);
 }
 
-.validate-form{
-  background-color: rgba(238, 234, 233);
+.validate-form {
+  background-color: var(--vldFormColor);
   width: 20%;
   height: 50%;
   margin-left: auto;
@@ -15,40 +17,31 @@ body {
   padding: 0 20px;
   padding-top: 100px;
   padding-left: 70px;
-  
-
-
 }
 
-
-.val-input{
-
-    display: block;
-    width: 80%;
-    height: calc(2.25rem + 2px);
-    padding: 0.375rem 0.75rem;
-    font-family: inherit;
-    font-size: 1rem;
-    font-weight: 400;
-    line-height: 1.5;
-    background-color: rgba(220, 221, 225);
-    background-clip: padding-box;
-    border: 1px solid #000000;
-    border-radius: 0.25rem;
-    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
-    
-
+.val-input {
+  display: block;
+  width: 80%;
+  height: calc(2.25rem + 2px);
+  padding: 0.375rem 0.75rem;
+  font-family: inherit;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.5;
+  background-color: rgba(220, 221, 225);
+  background-clip: padding-box;
+  border: 1px solid #000000;
+  border-radius: 0.25rem;
+  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
 }
 
-
-.button-wrapper{
+.button-wrapper {
   padding-top: 50px;
   display: flex;
   flex-direction: row;
 }
 
-.val-btn{
-
+.val-btn {
   width: 30%;
   height: calc(2.25rem + 2px);
   padding: 0.375rem 0.75rem;
@@ -56,10 +49,9 @@ body {
   font-size: 1rem;
   font-weight: 400;
   line-height: 1.5;
-  background-color: rgba(6, 91, 255);
+  background-color: var(--buttonColor);
   background-clip: padding-box;
   border: 1px solid #000000;
   border-radius: 0.25rem;
   transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
-
 }

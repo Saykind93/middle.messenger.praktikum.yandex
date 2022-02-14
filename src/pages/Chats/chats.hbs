@@ -1,36 +1,36 @@
+<head>
+  <title>Чаты</title>
+  <link rel="stylesheet" href="./../Chats/chats.css" />
+
+</head>
+
 <main>
-<div class="chat-wrapper">
-  <div class="chats">
+  <div class="chat-wrapper">
+    <div class="chats">
 
-    <div class="one-chat">
-      антон
+      <div class="one-chat">
+        <div class="message-author-name">антон</div>
+        <div class="short-message">привет...</div>
+      </div>
+      <div class="one-chat">
+        <div class="message-author-name">игорь</div>
+        <div class="short-message">привет, норма...</div>
+      </div>
+
     </div>
-    <div class="one-chat">
-      игорь
+    <div class="message-wrapper">
+      <div class="messages">
+        <div class="inbox-message">Привет, как дела?</div>
+        <div class="outbox-message">Привет, нормально</div>
+
+      </div>
+
+      <form class="message-form">
+        <input class="val-input" type="text" name="message" />
+        {{> button name="Enter" textlink="./../User/user.hbs"}}
+      </form>
+
     </div>
-
-
 
   </div>
-  <div class="message-wrapper">
-  <div class="messages">
-    <div class="inbox-message">Привет, как дела?</div>
-    <div class="outbox-message">Привет, нормально</div>
-
-    
-
-    </div>
-
-    <form class="message-form">
-        <input class="val-input" type="text" name="message">
-<button class="val-btn"><a href="./../User/user.hbs">Enter</a></button>
-    </form>
-
-
-  </div>
-
-
-
-</div>
 </main>
-<link rel="stylesheet" href="./../Chats/chats.css">
