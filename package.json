@@ -48,7 +48,6 @@
   },
   "targets" : {
     "regular" : {
-      "source": "src/index.ts",
       "context" : "browser",
       "outputFormat" : "global",
       "isLibrary" : false,
