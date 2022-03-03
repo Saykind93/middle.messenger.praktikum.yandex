@@ -11,5 +11,6 @@
   "noUnusedLocals": true,
   "noUnusedParameters": true,
   "sourceMap": true,
-  "strictNullChecks": false,
+  "strictNullChecks": true,
+  "strict": false,
 }
