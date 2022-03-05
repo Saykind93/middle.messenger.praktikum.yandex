@@ -2,7 +2,9 @@ import template from "./chats.hbs";
 import Button from "../../components/Button";
 import Input from "../../components/Input";
 import Block from "../../utils/Block";
-
+import { getFormData } from "../../utils/getFormData";
+import { createErrorMessage } from "../../utils/createErrorMessage";
+import { validationValue } from "../../constants/validation";
 import * as styles from "./chats.scss"
 
 
@@ -26,14 +28,7 @@ export class ChatsPage extends Block {
       events: {
         click: (e) => {
           e.preventDefault();
-          const data: HTMLFormElement | null = new FormData(
-            document.getElementById("mymessageform")
-          );
-          let new_obj: object = {};
-          for (let iter of data.entries()) {
-            new_obj[iter[0]] = iter[1];
-          }
-          console.log(new_obj);
+          getFormData("message-form");
           location.href = "/pages/User/user.html";
         },
       },
@@ -44,12 +39,18 @@ export class ChatsPage extends Block {
       events: {
         blur: (e) => {
           if (!e.target.value.length>0) {
-            alert(
-              "ошибка message, не должно быть пустым"
-            );
+            createErrorMessage(e.target, validationValue.message.message);
           }
         },
-        focus: (e) => {},
+        focus: (e) => {
+          let error = document.getElementById("error");
+          error.style.display = "none";
+          error.innerText = "";
+        },
+
+
+
+
       },
     });
 

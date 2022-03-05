@@ -4,7 +4,7 @@ import template from './button.hbs'
 interface ButtonProps {
   label: string;
   textlink: string,
-  events?: { click?: (e:any) => undefined | void };
+  events?: { click?: (e:Event) => undefined | void };
 }
 
 export class Button extends Block {

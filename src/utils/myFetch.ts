@@ -6,18 +6,18 @@ const METHODS = {
 };
 
 function queryStringify(data) {
-  let r = [];
+  let stringParam = [];
   for (let i in data) {
-    r.push(i + "=" + data[i].toString());
+    stringParam.push(i + "=" + data[i].toString());
   }
-  r = "?" + r.join("&");
-  return r;
+  stringParam = "?" + r.join("&");
+  return stringParam;
 }
 
 class HTTPTransport {
   get = (url, options = {}) => {
     let { data } = options;
-    url = queryStringify(data);
+    url = url + queryStringify(data);
     console.log(url);
     return this.request(
       url,

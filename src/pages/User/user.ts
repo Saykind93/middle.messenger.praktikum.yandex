@@ -2,6 +2,9 @@ import template from "./user.hbs";
 import Button from "../../components/Button";
 import Block from "../../utils/Block";
 import Input from "../../components/Input";
+import { getFormData } from "../../utils/getFormData";
+import { validationValue } from "../../constants/validation";
+import { createErrorMessage } from "../../utils/createErrorMessage";
 
 import * as styles from "./user.scss";
 
@@ -23,18 +26,11 @@ export default class UserPage extends Block {
     });
 
     this.children.buttonavatar = new Button({
-      label: "Изменить пароль",
+      label: "Изменить аватар",
       events: {
         click: (e) => {
           e.preventDefault();
-          const data: HTMLFormElement | null = new FormData(
-            document.getElementById("formchangeavatar")
-          );
-          let new_obj: object = {};
-          for (let iter of data.entries()) {
-            new_obj[iter[0]] = iter[1];
-          }
-          console.log(new_obj);
+          getFormData("change-avatar-form");
         },
       },
     });
@@ -54,14 +50,7 @@ export default class UserPage extends Block {
       events: {
         click: (e) => {
           e.preventDefault();
-          const data: HTMLFormElement | null = new FormData(
-            document.getElementById("changeregistryform")
-          );
-          let new_obj: object = {};
-          for (let iter of data.entries()) {
-            new_obj[iter[0]] = iter[1];
-          }
-          console.log(new_obj);
+          getFormData("change-registry-form");
         },
       },
     });
@@ -70,14 +59,16 @@ export default class UserPage extends Block {
       label: "first_name",
       events: {
         blur: (e) => {
-          let re = /(^[А-ЯЁ]{1}[а-яё-]+)|(^[A-Z]{1}[a-z-]+)/u;
+          let re = validationValue.first_name.re;
           if (!re.test(e.target.value)) {
-            alert(
-              "ошибка first_name, латиница или кириллица, первая буква должна быть заглавной, без пробелов и без цифр, нет спецсимволов (допустим только дефис)."
-            );
+            createErrorMessage(e.target, validationValue.first_name.message);
           }
         },
-        focus: (e) => {},
+        focus: (e) => {
+          let error = document.getElementById("error");
+          error.style.display = "none";
+          error.innerText = "";
+        },
       },
     });
 
@@ -85,14 +76,16 @@ export default class UserPage extends Block {
       label: "second_name",
       events: {
         blur: (e) => {
-          let re = /(^[А-ЯЁ]{1}[а-яё-]+)|(^[A-Z]{1}[a-z-]+)/u;
+          let re = validationValue.second_name.re;
           if (!re.test(e.target.value)) {
-            alert(
-              "ошибка second_name, латиница или кириллица, первая буква должна быть заглавной, без пробелов и без цифр, нет спецсимволов (допустим только дефис)."
-            );
+            createErrorMessage(e.target, validationValue.second_name.message);
           }
         },
-        focus: (e) => {},
+        focus: (e) => {
+          let error = document.getElementById("error");
+          error.style.display = "none";
+          error.innerText = "";
+        },
       },
     });
 
@@ -100,28 +93,32 @@ export default class UserPage extends Block {
       label: "login",
       events: {
         blur: (e) => {
-          let re = /^[a-zA-Z0-9_-]{3,20}$/;
+          let re = validationValue.login.re;
           if (!re.test(e.target.value)) {
-            alert(
-              "ошибка логин, от 3 до 20 символов, латиница, может содержать цифры, но не состоять из них, без пробелов, без спецсимволов (допустимы дефис и нижнее подчёркивание)."
-            );
+            createErrorMessage(e.target, validationValue.login.message);
           }
         },
-        focus: (e) => {},
+        focus: (e) => {
+          let error = document.getElementById("error");
+          error.style.display = "none";
+          error.innerText = "";
+        },
       },
     });
     this.children.inputemail = new Input({
       label: "email",
       events: {
         blur: (e) => {
-          let re = /^[a-zA-Z0-9_-]+[@][a-zA-Z]+[.][a-zA-Z]+/;
+          let re = validationValue.email.re;
           if (!re.test(e.target.value)) {
-            alert(
-              "ошибка email, латиница, может включать цифры и спецсимволы вроде дефиса, обязательно должна быть «собака» (@) и точка после неё, но перед точкой обязательно должны быть буквы."
-            );
+            createErrorMessage(e.target, validationValue.email.message);
           }
         },
-        focus: (e) => {},
+        focus: (e) => {
+          let error = document.getElementById("error");
+          error.style.display = "none";
+          error.innerText = "";
+        },
       },
     });
 
@@ -137,48 +134,42 @@ export default class UserPage extends Block {
       label: "phone",
       events: {
         blur: (e) => {
-          let re = /^([+]{1})?[0-9]{10,15}$/;
+          let re = validationValue.phone.re;
           if (!re.test(e.target.value)) {
-            alert(
-              "ошибка телефон, от 10 до 15 символов, состоит из цифр, может начинается с плюса."
-            );
+            createErrorMessage(e.target, validationValue.phone.message);
           }
         },
-        focus: (e) => {},
+        focus: (e) => {
+          let error = document.getElementById("error");
+          error.style.display = "none";
+          error.innerText = "";
+        },
       },
     });
-
     this.children.buttonchangepassword = new Button({
       label: "Изменить пароль",
       events: {
         click: (e) => {
           e.preventDefault();
-          const data: HTMLFormElement | null = new FormData(
-            document.getElementById("changepasswordform")
-          );
-          let new_obj: object = {};
-          for (let iter of data.entries()) {
-            new_obj[iter[0]] = iter[1];
-          }
-
+          getFormData("change-password-form");
           location.href = "/pages/Chats/chats.html";
-          console.log(new_obj);
         },
       },
     });
-
     this.children.inputoldpassword = new Input({
       label: "oldpassword",
       events: {
         blur: (e) => {
-          let re = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,40}$/;
+          let re = validationValue.password.re;
           if (!re.test(e.target.value)) {
-            alert(
-              "ошибка старый пароль, от 8 до 40 символов, обязательно хотя бы одна заглавная буква и цифра."
-            );
+            createErrorMessage(e.target, validationValue.password.message);
           }
         },
-        focus: (e) => {},
+        focus: (e) => {
+          let error = document.getElementById("error");
+          error.style.display = "none";
+          error.innerText = "";
+        },
       },
     });
 
@@ -186,14 +177,16 @@ export default class UserPage extends Block {
       label: "newpassword",
       events: {
         blur: (e) => {
-          let re = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,40}$/;
+          let re = validationValue.password.re;
           if (!re.test(e.target.value)) {
-            alert(
-              "ошибка новый пароль, от 8 до 40 символов, обязательно хотя бы одна заглавная буква и цифра."
-            );
+            createErrorMessage(e.target, validationValue.password.message);
           }
         },
-        focus: (e) => {},
+        focus: (e) => {
+          let error = document.getElementById("error");
+          error.style.display = "none";
+          error.innerText = "";
+        },
       },
     });
   }

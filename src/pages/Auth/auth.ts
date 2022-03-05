@@ -2,6 +2,9 @@ import template from "./auth.hbs";
 import Button from "../../components/Button";
 import Input from "../../components/Input";
 import Block from "../../utils/Block";
+import { validationValue } from "../../constants/validation";
+import { getFormData } from "../../utils/getFormData";
+import { createErrorMessage } from "../../utils/createErrorMessage";
 
 import * as styles from "./auth.scss";
 
@@ -23,12 +26,7 @@ export class AuthPage extends Block {
       events: {
         click: (e) => {
           e.preventDefault();
-          const data = new FormData(document.getElementById("myauthform"));
-          let new_obj: object = {};
-          for (let iter of data.entries()) {
-            new_obj[iter[0]] = iter[1];
-          }
-          console.log(new_obj);
+          getFormData("my-auth-form");
           location.href = "/pages/Chats/chats.html";
         },
       },
@@ -48,14 +46,16 @@ export class AuthPage extends Block {
       label: "Login",
       events: {
         blur: (e) => {
-          let re = /^[a-zA-Z0-9_-]{3,20}$/;
+          let re = validationValue.login.re;
           if (!re.test(e.target.value)) {
-            alert(
-              "ошибка логин, от 3 до 20 символов, латиница, может содержать цифры, но не состоять из них, без пробелов, без спецсимволов (допустимы дефис и нижнее подчёркивание)."
-            );
+            createErrorMessage(e.target, validationValue.login.message);
           }
         },
-        focus: () => {},
+        focus: () => {
+          let error = document.getElementById("error");
+          error.style.display = "none";
+          error.innerText = "";
+        },
       },
     });
 
@@ -63,14 +63,16 @@ export class AuthPage extends Block {
       label: "Password",
       events: {
         blur: (e) => {
-          let re = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,40}$/;
+          let re = validationValue.password.re;
           if (!re.test(e.target.value)) {
-            alert(
-              "ошибка пароль, от 8 до 40 символов, обязательно хотя бы одна заглавная буква и цифра."
-            );
+            createErrorMessage(e.target, validationValue.password.message);
           }
         },
-        focus: (e) => {},
+        focus: () => {
+          let error = document.getElementById("error");
+          error.style.display = "none";
+          error.innerText = "";
+        },
       },
     });
   }

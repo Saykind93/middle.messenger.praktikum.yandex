@@ -27,12 +27,6 @@ export default class Error5Page extends Block {
     });
   }
 
-  // componentDidUpdate(oldProps: any, newProps: any): boolean {
-
-  //   if()
-  //     return super.componentDidUpdate(oldProps, newProps)
-  // }
-
   render() {
     return this.compile(template, { styles });
   }
