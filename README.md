@@ -2,7 +2,7 @@
 
 https://github.com/Saykind93/middle.messenger.praktikum.yandex/pull/1
 
-Мессенджер sprint_1
+Мессенджер sprint_2
 
 Данный учебный проект является мессенджером.
 
@@ -23,5 +23,6 @@ https://www.figma.com/file/YjAqjf6YOX2L465TBD7wlh/ypsprint1?node-id=0%3A1
 
 ### Ссылка на netlify
 https://objective-bassi-d7a435.netlify.app
+
 
 

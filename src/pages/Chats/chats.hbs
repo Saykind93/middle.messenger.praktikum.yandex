@@ -1,9 +1,3 @@
-<head>
-  <title>Чаты</title>
-  <link rel="stylesheet" href="./../Chats/chats.scss" />
-
-</head>
-
 <main>
   <div class="chat-wrapper">
     <div class="chats">
@@ -22,15 +16,14 @@
       <div class="messages">
         <div class="inbox-message">Привет, как дела?</div>
         <div class="outbox-message">Привет, нормально</div>
-
       </div>
 
-      <form class="message-form">
-        <input class="val-input" type="text" name="message" />
-        {{> button name="Enter" textlink="./../User/user.hbs"}}
+      <form class="message-form" id="message-form">
+        {{{inputmessage}}}
+        {{{button}}}
       </form>
 
     </div>
-
   </div>
+  <div id="error"></div>
 </main>

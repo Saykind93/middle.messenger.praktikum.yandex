@@ -3,9 +3,9 @@
   "version": "1.0.0",
   "description": "https://www.figma.com/file/YjAqjf6YOX2L465TBD7wlh/ypsprint1?node-id=0%3A1",
   "scripts": {
-    "dev": "parcel index.hbs",
-    "build": "parcel build index.hbs",
-    "start": "node ./server.js"
+    "dev": "parcel src/index.html src/pages/Chats/chats.html src/pages/User/user.html src/pages/Error5/error5.html src/pages/Registry/registry.html src/pages/Error404/error404.html",
+    "build": "parcel build src/index.html src/pages/Chats/chats.html src/pages/User/user.html src/pages/Error5/error5.html src/pages/Registry/registry.html src/pages/Error404/error404.html",
+    "start": "node ./server.ts"
   },
   "repository": {
     "type": "git",
@@ -16,8 +16,16 @@
   "license": "ISC",
   "devDependencies": {
     "@anikin/parcel-transformer-handlebars": "1.0.9",
-    "@parcel/transformer-sass": "^2.3.1",
-    "parcel": "2.2.1"
+    "@anikin/parcel-transformer-handlebars-precompile": "^1.0.1",
+    "@parcel/transformer-sass": "2.3.2",
+    "eslint-config-airbnb": "19.0.4",
+    "parcel": "2.2.1",
+    "postcss": "^8.4.7",
+    "postcss-import": "^14.0.2",
+    "postcss-url": "^10.1.3",
+    "stylelint": "14.5.1",
+    "ts-node": "10.5.0",
+    "typescript": "4.5.5"
   },
   "bugs": {
     "url": "https://github.com/Saykind93/middle.messenger.praktikum.yandex/issues"
@@ -25,16 +33,27 @@
   "homepage": "https://github.com/Saykind93/middle.messenger.praktikum.yandex#readme",
   "dependencies": {
     "@parcel/resolver-glob": "2.3.1",
-    "@parcel/transformer-postcss": "2.3.1",
+    "@parcel/transformer-postcss": "^2.3.1",
     "autoprefixer": "9.8.8",
     "dotenv": "7.0.0",
     "express": "4.17.2",
     "handlebars": "4.7.7",
+    "nanoid": "^3.3.1",
     "parcel-plugin-handlebars": "0.4.4",
     "precss": "4.0.0",
     "sass": "1.49.7"
   },
   "engines": {
     "node": "16.5.0"
-  }
+  },
+  "targets" : {
+    "regular" : {
+      "context" : "browser",
+      "outputFormat" : "global",
+      "isLibrary" : false,
+      "includeNodeModules" : {
+        "jquery": false
+      }
+    }
+}
 }
