@@ -1,6 +1,6 @@
 import AuthAPI from "../api/AuthAPI";
 import Router from "../utils/router";
-import store from "../utils/store";
+import store from "../utils/Store";
 
 class AuthController {
   constructor() {

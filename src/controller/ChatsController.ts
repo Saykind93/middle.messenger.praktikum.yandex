@@ -1,5 +1,5 @@
 import ChatsAPI from "../api/ChatsAPI";
-import store from "../utils/store";
+import store from "../utils/Store";
 
 class ChatsController {
   constructor() {

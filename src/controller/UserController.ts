@@ -1,5 +1,5 @@
 import UserAPI from "../api/UserAPI";
-import store from "../utils/store";
+import store from "../utils/Store";
 
 class UserController {
   constructor() {
