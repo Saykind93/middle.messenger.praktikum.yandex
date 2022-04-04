@@ -1,6 +1,4 @@
-import { withStore } from "../../utils/store";
-import { renderDom } from "./../../utils/renderDom";
-// export {UserPage as default} from './user'
+import { withStore } from "../../utils/Store";
 import { UserPage } from "./user";
 
 

@@ -1,4 +1,4 @@
-import { withStore } from "../../utils/store";
+import { withStore } from "../../utils/Store";
 import { ChatsPage } from "./chats";
 
 const withChats = withStore((state) => {
