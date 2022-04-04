@@ -7,6 +7,8 @@ import { validationValue } from "../../constants/validation";
 import { createErrorMessage } from "../../utils/createErrorMessage";
 
 import * as styles from "./registry.scss";
+import AuthController from "../../controller/AuthController";
+import Router from "../../utils/router";
 
 interface RegistryPageProps {
   className: string;
@@ -26,8 +28,8 @@ export default class RegistryPage extends Block {
       events: {
         click: (e) => {
           e.preventDefault();
-          getFormData("registry-form");
-          location.href = "/pages/Error5/error5.html";
+          let data = getFormData("registry-form");
+          AuthController.signUp(data);
         },
       },
     });
@@ -42,7 +44,7 @@ export default class RegistryPage extends Block {
           }
         },
         focus: (e) => {
-          let error = document.getElementById("error");
+          let error: HTMLElement | any = document.getElementById("error");
           error.style.display = "none";
           error.innerText = "";
         },
@@ -59,7 +61,7 @@ export default class RegistryPage extends Block {
           }
         },
         focus: (e) => {
-          let error = document.getElementById("error");
+          let error: HTMLElement | any = document.getElementById("error");
           error.style.display = "none";
           error.innerText = "";
         },
@@ -76,7 +78,7 @@ export default class RegistryPage extends Block {
           }
         },
         focus: (e) => {
-          let error = document.getElementById("error");
+          let error: HTMLElement | any = document.getElementById("error");
           error.style.display = "none";
           error.innerText = "";
         },
@@ -92,7 +94,7 @@ export default class RegistryPage extends Block {
           }
         },
         focus: (e) => {
-          let error = document.getElementById("error");
+          let error: HTMLElement | any = document.getElementById("error");
           error.style.display = "none";
           error.innerText = "";
         },
@@ -109,7 +111,7 @@ export default class RegistryPage extends Block {
           }
         },
         focus: (e) => {
-          let error = document.getElementById("error");
+          let error: HTMLElement | any = document.getElementById("error");
           error.style.display = "none";
           error.innerText = "";
         },
@@ -126,7 +128,7 @@ export default class RegistryPage extends Block {
           }
         },
         focus: (e) => {
-          let error = document.getElementById("error");
+          let error: HTMLElement | any = document.getElementById("error");
           error.style.display = "none";
           error.innerText = "";
         },

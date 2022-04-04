@@ -6,7 +6,10 @@ import { validationValue } from "../../constants/validation";
 import { getFormData } from "../../utils/getFormData";
 import { createErrorMessage } from "../../utils/createErrorMessage";
 
-import * as styles from "./auth.scss";
+
+import * as styles from "./auth.module.scss";
+import AuthController from "../../controller/AuthController";
+import Router from "../../utils/router";
 
 interface AuthPageProps {
   className: string;
@@ -22,28 +25,28 @@ export class AuthPage extends Block {
   protected initChildren(): void {
     this.children.buttonenter = new Button({
       label: "Enter",
-      textlink: "/pages/Chats/chats.html",
       events: {
         click: (e) => {
           e.preventDefault();
-          getFormData("my-auth-form");
-          location.href = "/pages/Chats/chats.html";
+          let data = getFormData("my-auth-form");
+          AuthController.login(data);
         },
       },
     });
 
     this.children.buttonregistry = new Button({
       label: "Registration",
-      textlink: "/pages/Registry/registry.html",
+      textlink: "/sign-up",
       events: {
         click: () => {
-          location.href = "/pages/Registry/registry.html";
+          const router = new Router();
+          // router.go('/sign-up')
         },
       },
     });
 
     this.children.inputlogin = new Input({
-      label: "Login",
+      label: "login",
       events: {
         blur: (e) => {
           let re = validationValue.login.re;
@@ -52,7 +55,7 @@ export class AuthPage extends Block {
           }
         },
         focus: () => {
-          let error = document.getElementById("error");
+          let error: any = document.getElementById("error");
           error.style.display = "none";
           error.innerText = "";
         },
@@ -60,7 +63,7 @@ export class AuthPage extends Block {
     });
 
     this.children.inputpassword = new Input({
-      label: "Password",
+      label: "password",
       events: {
         blur: (e) => {
           let re = validationValue.password.re;
@@ -69,13 +72,24 @@ export class AuthPage extends Block {
           }
         },
         focus: () => {
-          let error = document.getElementById("error");
+          let error: any = document.getElementById("error");
           error.style.display = "none";
           error.innerText = "";
         },
       },
     });
+    ///перенести в компонент чаты/пользователь
+    this.children.buttonlogout = new Button({
+      label: "Logout",
+      events: {
+        click: (e) => {
+          e.preventDefault();
+          AuthController.logout();
+        },
+      },
+    });
   }
+
 
   render() {
     return this.compile(template, { styles });

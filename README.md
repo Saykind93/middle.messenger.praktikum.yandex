@@ -1,8 +1,8 @@
 Ссылка на pull request
 
-https://github.com/Saykind93/middle.messenger.praktikum.yandex/pull/2
+https://github.com/Saykind93/middle.messenger.praktikum.yandex/pull/3
 
-Мессенджер sprint_2
+Мессенджер sprint_3
 
 Данный учебный проект является мессенджером.
 
@@ -17,6 +17,9 @@ npm i
 Для работы испольуем:
 npm run build - создает сборку
 npm run start - запускаем на сервере 3000
+
+Для тестов используем:
+npm tun test - запускает тесты
 
 ### Ссылка на фигму
 https://www.figma.com/file/YjAqjf6YOX2L465TBD7wlh/ypsprint1?node-id=0%3A1

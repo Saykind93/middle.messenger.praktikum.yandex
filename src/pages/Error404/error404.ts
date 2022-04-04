@@ -3,6 +3,7 @@ import Button from "../../components/Button";
 import Block from "../../utils/Block";
 
 import * as styles from "./error404.scss";
+import Router from "../../utils/router";
 
 interface Error404PageProps {
   className: string;
@@ -21,7 +22,8 @@ export default class Error404Page extends Block {
       events: {
         click: (e) => {
           e.preventDefault();
-          location.href = "/pages/Chats/chats.html";
+          const router = new Router();
+          router.go("/messenger");
         },
       },
     });

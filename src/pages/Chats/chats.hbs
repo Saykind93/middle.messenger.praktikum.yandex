@@ -1,22 +1,22 @@
 <main>
-  <div class="chat-wrapper">
-    <div class="chats">
+  <div class="chats-container">
 
-      <div class="one-chat">
-        <div class="message-author-name">антон</div>
-        <div class="short-message">привет...</div>
+    <div class="chats">
+      {{{buttonsettings}}}
+      {{{buttonlogout}}}
+      <div class="new-chat-box">
+        <form class="new-chat-button" id="newchat-id">
+          {{{inputnewchat}}}
+          {{{buttonnewchat}}}
+        </form>
       </div>
-      <div class="one-chat">
-        <div class="message-author-name">игорь</div>
-        <div class="short-message">привет, норма...</div>
-      </div>
+
+      {{{mychat}}}
 
     </div>
     <div class="message-wrapper">
-      <div class="messages">
-        <div class="inbox-message">Привет, как дела?</div>
-        <div class="outbox-message">Привет, нормально</div>
-      </div>
+
+      {{{mymessage}}}
 
       <form class="message-form" id="message-form">
         {{{inputmessage}}}
@@ -24,6 +24,6 @@
       </form>
 
     </div>
+    <div id="error"></div>
   </div>
-  <div id="error"></div>
 </main>

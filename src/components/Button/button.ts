@@ -1,10 +1,10 @@
 import Block from "../../utils/Block";
-import template from './button.hbs'
+import template from "./button.hbs";
 
 interface ButtonProps {
   label: string;
-  textlink: string,
-  events?: { click?: (e:Event) => undefined | void };
+  textlink?: string;
+  events?: { click?: (e: Event) => undefined | void };
 }
 
 export class Button extends Block {
@@ -13,6 +13,6 @@ export class Button extends Block {
   }
 
   render() {
-    return this.compile(template, {...this.props });
+    return this.compile(template, { ...this.props });
   }
 }

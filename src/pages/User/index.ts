@@ -1,8 +1,8 @@
+import { withStore } from "../../utils/store";
 import { renderDom } from "./../../utils/renderDom";
-import UserPage from "./../User/user";
+// export {UserPage as default} from './user'
+import { UserPage } from "./user";
 
-document.addEventListener("DOMContentLoaded", () => {
-  const userPage = new UserPage();
 
-  renderDom("#appuser", userPage);
-});
+const withUser = withStore(state=> ({...state.currentUser}))
+export default withUser(UserPage)

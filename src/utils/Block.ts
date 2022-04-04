@@ -1,5 +1,6 @@
 import EventBus from "./EventBus";
 import { nanoid } from "nanoid";
+import { isEqual } from "./helpers";
 
 export default class Block {
   static EVENTS = {
@@ -23,7 +24,6 @@ export default class Block {
     const eventBus = new EventBus();
 
     const { props, children } = this.getChildren(propsAndChildren);
-
     this.children = children;
 
     this.initChildren();
@@ -56,7 +56,6 @@ export default class Block {
         props[key] = value;
       }
     });
-
     return { props, children };
   }
 
@@ -82,14 +81,16 @@ export default class Block {
   }
 
   private _componentDidUpdate(oldProps: any, newProps: any) {
-    const response = this.componentDidUpdate(oldProps, newProps);
     if (this.componentDidUpdate(oldProps, newProps)) {
       this.eventBus().emit(Block.EVENTS.FLOW_RENDER);
     }
   }
 
   componentDidUpdate(oldProps, newProps) {
-    return true;
+    if (!isEqual(oldProps, newProps)) {
+      return true;
+    }
+    return false;
   }
 
   setProps = (nextProps) => {
@@ -97,7 +98,10 @@ export default class Block {
       return;
     }
 
+    const { children, props } = this.getChildren(nextProps);
+
     Object.assign(this.props, nextProps);
+    this.eventBus().emit(Block.EVENTS.FLOW_RENDER);
   };
 
   get element() {
@@ -105,21 +109,20 @@ export default class Block {
   }
 
   private _render() {
-    const fragment = this.render();
+    this.initChildren();
 
+    const fragment = this.render();
     const newElement = fragment.firstElementChild as HTMLElement;
 
     if (this._element) {
       this._removeEvents();
       this._element.replaceWith(newElement);
     }
-
     this._element = newElement;
 
     this._addEvents();
   }
 
-  // Может переопределять пользователь, необязательно трогать
   protected render(): DocumentFragment {
     return new DocumentFragment();
   }
@@ -181,20 +184,19 @@ export default class Block {
     }
   }
 
-  compile(template: (context: any) => string, context: any) {
+  compile(template: (context: any) => any, context: any) {
     const fragment = this._createDocumentElement(
       "template"
     ) as HTMLTemplateElement;
 
     Object.entries(this.children).forEach(([key, child]) => {
       if (Array.isArray(child)) {
-        context[key] = child.map(
-          (ch) => `<div data-id="id-${child.id}"></div>`
+        context[key] = [];
+        child.map((ch) =>
+          context[key].push(`<div data-id="id-${ch.id}"></div>`)
         );
-
         return;
       }
-
       context[key] = `<div data-id="id-${child.id}"></div>`;
     });
 
@@ -204,7 +206,16 @@ export default class Block {
 
     Object.entries(this.children).forEach(([key, child]) => {
       if (Array.isArray(child)) {
-        context[key] = child.map((ch) => `<div data-id="id-${child.id}"></div>`);
+        child.map((ch) => {
+          const stub = fragment.content.querySelector(
+            `[data-id="id-${ch.id}"]`
+          );
+          if (!stub) {
+            return;
+          }
+
+          stub.replaceWith(ch.getContent()!);
+        });
         return;
       }
 

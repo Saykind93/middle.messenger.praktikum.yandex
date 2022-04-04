@@ -1,13 +1,13 @@
-export {ChatsPage as default } from './chats'
+import { withStore } from "../../utils/store";
+import { ChatsPage } from "./chats";
 
-import { renderDom } from "./../../utils/renderDom";
-import ChatsPage from './../Chats'
+const withChats = withStore((state) => {
+  return {
+    propOne: state.localChat,
+    propTwo: state.chatId,
+    chatsStore: state.currentChats,
+    userStore: state.currentUser,
+  };
+});
+export default withChats(ChatsPage);
 
-
-document.addEventListener('DOMContentLoaded', ()=>{
-  const chatsPage = new ChatsPage()
-
-  renderDom('#appchats', chatsPage)
-
-
-})

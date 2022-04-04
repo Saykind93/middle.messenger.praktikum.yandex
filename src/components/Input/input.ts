@@ -3,9 +3,10 @@ import template from "./input.hbs";
 
 interface InputProps {
   label: string;
+  textValue?: string;
   events?: {
-    blur?: (e: Event) => void;
-    focus?: (e: Event) => void;
+    blur?: (e: Event | any) => void;
+    focus?: (e: Event | any) => void;
   };
 }
 

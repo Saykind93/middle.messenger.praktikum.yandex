@@ -5,18 +5,15 @@ import Input from "../../components/Input";
 import { getFormData } from "../../utils/getFormData";
 import { validationValue } from "../../constants/validation";
 import { createErrorMessage } from "../../utils/createErrorMessage";
+import Router from "../../utils/router";
 
-import * as styles from "./user.scss";
+import * as styles from "./user.module.scss";
+import UserController from "../../controller/UserController";
+import InputSubmit from "../../components/InputSubmit";
 
-interface UserPageProps {
-  className: string;
-}
-
-export default class UserPage extends Block {
-  constructor(props: UserPageProps) {
-    super({
-      props,
-    });
+export class UserPage extends Block {
+  constructor(props) {
+    super(props);
   }
 
   protected initChildren(): void {
@@ -25,38 +22,34 @@ export default class UserPage extends Block {
       textlink: "/pages/Error5/error5.html",
     });
 
-    this.children.buttonavatar = new Button({
-      label: "Изменить аватар",
+    this.children.buttonavatar = new InputSubmit({
       events: {
         click: (e) => {
           e.preventDefault();
-          getFormData("change-avatar-form");
+          const inputFile: any = document.getElementById("avatar");
+          const formData: any = new FormData();
+
+          formData.append("avatar", inputFile.files[0]);
+
+          UserController.putProfileAvatar(formData);
         },
       },
     });
-
-    this.children.inputavatar = new Input({
-      label: "avatar",
-      events: {
-        blur: (e) => {},
-        focus: (e) => {},
-      },
-    });
-
-    ///
 
     this.children.button = new Button({
       label: "Registration",
       events: {
         click: (e) => {
           e.preventDefault();
-          getFormData("change-registry-form");
+          let data = getFormData("change-registry-form");
+          UserController.putProfile(data);
         },
       },
     });
 
     this.children.inputfirstname = new Input({
       label: "first_name",
+      textValue: this.props?.first_name,
       events: {
         blur: (e) => {
           let re = validationValue.first_name.re;
@@ -65,7 +58,7 @@ export default class UserPage extends Block {
           }
         },
         focus: (e) => {
-          let error = document.getElementById("error");
+          let error: HTMLElement | any = document.getElementById("error");
           error.style.display = "none";
           error.innerText = "";
         },
@@ -74,6 +67,7 @@ export default class UserPage extends Block {
 
     this.children.inputsecondname = new Input({
       label: "second_name",
+      textValue: this.props?.second_name,
       events: {
         blur: (e) => {
           let re = validationValue.second_name.re;
@@ -82,7 +76,7 @@ export default class UserPage extends Block {
           }
         },
         focus: (e) => {
-          let error = document.getElementById("error");
+          let error: HTMLElement | any = document.getElementById("error");
           error.style.display = "none";
           error.innerText = "";
         },
@@ -91,6 +85,7 @@ export default class UserPage extends Block {
 
     this.children.inputlogin = new Input({
       label: "login",
+      textValue: this.props?.login,
       events: {
         blur: (e) => {
           let re = validationValue.login.re;
@@ -99,7 +94,7 @@ export default class UserPage extends Block {
           }
         },
         focus: (e) => {
-          let error = document.getElementById("error");
+          let error: HTMLElement | any = document.getElementById("error");
           error.style.display = "none";
           error.innerText = "";
         },
@@ -107,6 +102,7 @@ export default class UserPage extends Block {
     });
     this.children.inputemail = new Input({
       label: "email",
+      textValue: this.props?.email,
       events: {
         blur: (e) => {
           let re = validationValue.email.re;
@@ -115,7 +111,7 @@ export default class UserPage extends Block {
           }
         },
         focus: (e) => {
-          let error = document.getElementById("error");
+          let error: HTMLElement | any = document.getElementById("error");
           error.style.display = "none";
           error.innerText = "";
         },
@@ -124,6 +120,7 @@ export default class UserPage extends Block {
 
     this.children.inputdisplayname = new Input({
       label: "display_name",
+      textValue: this.props?.display_name,
       events: {
         blur: (e) => {},
         focus: (e) => {},
@@ -132,6 +129,7 @@ export default class UserPage extends Block {
 
     this.children.inputphone = new Input({
       label: "phone",
+      textValue: this.props?.phone,
       events: {
         blur: (e) => {
           let re = validationValue.phone.re;
@@ -140,7 +138,7 @@ export default class UserPage extends Block {
           }
         },
         focus: (e) => {
-          let error = document.getElementById("error");
+          let error: HTMLElement | any = document.getElementById("error");
           error.style.display = "none";
           error.innerText = "";
         },
@@ -151,13 +149,13 @@ export default class UserPage extends Block {
       events: {
         click: (e) => {
           e.preventDefault();
-          getFormData("change-password-form");
-          location.href = "/pages/Chats/chats.html";
+          let data = getFormData("change-password-form");
+          UserController.putPassword(data);
         },
       },
     });
     this.children.inputoldpassword = new Input({
-      label: "oldpassword",
+      label: "oldPassword",
       events: {
         blur: (e) => {
           let re = validationValue.password.re;
@@ -166,7 +164,7 @@ export default class UserPage extends Block {
           }
         },
         focus: (e) => {
-          let error = document.getElementById("error");
+          let error: HTMLElement | any = document.getElementById("error");
           error.style.display = "none";
           error.innerText = "";
         },
@@ -174,7 +172,7 @@ export default class UserPage extends Block {
     });
 
     this.children.inputnewpassword = new Input({
-      label: "newpassword",
+      label: "newPassword",
       events: {
         blur: (e) => {
           let re = validationValue.password.re;
@@ -183,15 +181,31 @@ export default class UserPage extends Block {
           }
         },
         focus: (e) => {
-          let error = document.getElementById("error");
+          let error: HTMLElement | any = document.getElementById("error");
           error.style.display = "none";
           error.innerText = "";
+        },
+      },
+    });
+
+    this.children.tochatsbutton = new Button({
+      label: "Обратно к чатам",
+      events: {
+        click: (e) => {
+          e.preventDefault();
+          const router = new Router();
+          router.go("/messenger");
         },
       },
     });
   }
 
   render() {
-    return this.compile(template, { styles });
+    return this.compile(template, {
+      styles,
+      props: {
+        avatar: `https://ya-praktikum.tech/api/v2/resources${this.props.avatar}`,
+      },
+    });
   }
 }
