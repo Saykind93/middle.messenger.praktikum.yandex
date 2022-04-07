@@ -14,20 +14,19 @@ export default class HTTPTransport {
     this.endpoint = `${HTTPTransport.API_URL}${endpoint}`;
   }
 
-  public get<Response = void>(url: string = "/"): Promise<Response> {
+  public get<Response = void>(url: string = "/", data?: unknown, type?:unknown): Promise<Response> {
     return this.request<Response>(this.endpoint + url);
   }
 
   public put<Response = void>(
     url: string,
     data: unknown,
-    type?
+    type?: string
   ): Promise<Response> {
     return this.request<Response>(this.endpoint + url, {
       method: METHODS.PUT,
       data,
-      type,
-    });
+    }, type);
   }
 
   public delete<Response = void>(
@@ -49,9 +48,10 @@ export default class HTTPTransport {
 
   private request = (
     url,
-    options = { method: METHODS.GET, type: "application/json" }
+    options = { method: METHODS.GET, data: undefined},
+    type = "application/json"
   ) => {
-    const { method, data, type } = options;
+    const { method, data } = options;
     return new Promise((resolve, reject) => {
       const xhr = new XMLHttpRequest();
       xhr.open(method, url);

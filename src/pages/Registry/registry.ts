@@ -24,7 +24,6 @@ export default class RegistryPage extends Block {
   protected initChildren(): void {
     this.children.button = new Button({
       label: "Registration",
-      textlink: "/pages/Chats/chats.html",
       events: {
         click: (e) => {
           e.preventDefault();
