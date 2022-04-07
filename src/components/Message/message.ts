@@ -12,8 +12,6 @@ export class Message extends Block {
     this.props = props;
   }
 
-  protected initChildren(): void {}
-
   render() {
     return this.compile(template, { ...this.props });
   }

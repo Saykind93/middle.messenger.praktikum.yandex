@@ -31,10 +31,6 @@ export class ChatsPage extends Block {
 
     this.children.inputnewchat = new Input({
       label: "title",
-      events: {
-        blur: (e) => {},
-        focus: (e) => {},
-      },
     });
 
     this.children.mychat = [];
@@ -69,11 +65,11 @@ export class ChatsPage extends Block {
         click: (e) => {
           e.preventDefault();
           let newMessage = getFormData("message-form");
-
           ChatsController.sendMessage({
             ...newMessage,
             userId: this.props.userStore.id,
-            chatId: this.props.chatId,
+            chatId: this.props.propTwo,
+            token: this.props.token,
           });
         },
       },
@@ -110,8 +106,8 @@ export class ChatsPage extends Block {
       events: {
         click: (e) => {
           e.preventDefault();
-          const router = new Router()
-          router.go('/settings')
+          const router = new Router();
+          router.go("/settings");
         },
       },
     });

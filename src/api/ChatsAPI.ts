@@ -1,34 +1,27 @@
-import BaseApi from "./BaseApi";
+import HTTPTransport from "../utils/HTTPTransport";
+import { ChatDataInt, OneChatInt } from "../interfaces/interfaces";
 
-interface ChatDataInt {
-  title: string;
-}
+export default class ChatsAPI {
+  protected http: HTTPTransport;
 
-export default class ChatsAPI extends BaseApi {
   constructor() {
-    super("/chats");
+    this.http = new HTTPTransport("/chats");
   }
 
-  async createChat(ChatData: ChatDataInt): Promise<unknown> {
-    return await this.http.post("/", ChatData);
+  async createChat(chatData: ChatDataInt): Promise<string> {
+    return await this.http.post("/", chatData);
   }
-  async addUser(ChatData: any): Promise<unknown> {
-    return await this.http.put("/users", ChatData).catch((e) => console.log(e));
+  async addUser(chatData: any): Promise<string> {
+    return await this.http.put("/users", chatData);
   }
-  async deleteUser(ChatData: any): Promise<unknown> {
-    return await this.http
-      .delete("/users", ChatData)
-      .catch((e) => console.log(e));
+  async deleteUser(chatData: any): Promise<string> {
+    return await this.http.delete("/users", chatData);
   }
-  async getChat(ChatId: any): Promise<unknown> {
-    return this.http.post("/token/" + ChatId);
+  async getChat(chatId: any): Promise<string> {
+    return this.http.post("/token/" + chatId);
   }
 
-  readChats(): Promise<unknown> {
+  readChats(): Promise<OneChatInt> {
     return this.http.get("/");
   }
-  update = undefined;
-  delete = undefined;
-  create = undefined;
-  read = undefined;
 }

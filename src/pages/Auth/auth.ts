@@ -6,7 +6,6 @@ import { validationValue } from "../../constants/validation";
 import { getFormData } from "../../utils/getFormData";
 import { createErrorMessage } from "../../utils/createErrorMessage";
 
-
 import * as styles from "./auth.module.scss";
 import AuthController from "../../controller/AuthController";
 import Router from "../../utils/router";
@@ -78,18 +77,7 @@ export class AuthPage extends Block {
         },
       },
     });
-    ///перенести в компонент чаты/пользователь
-    this.children.buttonlogout = new Button({
-      label: "Logout",
-      events: {
-        click: (e) => {
-          e.preventDefault();
-          AuthController.logout();
-        },
-      },
-    });
   }
-
 
   render() {
     return this.compile(template, { styles });

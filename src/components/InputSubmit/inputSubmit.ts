@@ -3,8 +3,8 @@ import template from "./inputSubmit.hbs";
 
 interface InputSubmitProps {
   events?: {
-    blur?: (e: Event | any) => any;
-    focus?: (e: Event | any) => any;
+    blur?: (e: Event) => void;
+    focus?: (e: Event) => void;
   };
 }
 

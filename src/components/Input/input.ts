@@ -5,8 +5,8 @@ interface InputProps {
   label: string;
   textValue?: string;
   events?: {
-    blur?: (e: Event | any) => void;
-    focus?: (e: Event | any) => void;
+    blur?: (e: Event) => void;
+    focus?: (e: Event) => void;
   };
 }
 

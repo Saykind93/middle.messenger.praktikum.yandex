@@ -1,5 +1,5 @@
 import UserAPI from "../api/UserAPI";
-import store from "../utils/Store";
+import { store } from "../utils/Store";
 
 class UserController {
   constructor() {
@@ -14,6 +14,7 @@ class UserController {
     const newUser = await this.api.putProfileAvatar(UserData);
     store.set("currentUser", newUser);
   }
+
   async putPassword(UserData) {
     await this.api.putPassword(UserData);
   }

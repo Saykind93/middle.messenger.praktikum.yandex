@@ -1,6 +1,6 @@
 import EventBus from "./EventBus";
 import { nanoid } from "nanoid";
-import { isEqual } from "./helpers";
+import { isEqual } from "./isEqual";
 
 export default class Block {
   static EVENTS = {

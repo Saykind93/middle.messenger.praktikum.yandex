@@ -1,18 +1,11 @@
+import { queryStringify } from "./helpers";
+
 const METHODS = {
   GET: "GET",
   POST: "POST",
   PUT: "PUT",
   DELETE: "DELETE",
 };
-
-// function queryStringify(data) {
-//   let stringParam = [];
-//   for (let i in data) {
-//     stringParam.push(i + "=" + data[i].toString());
-//   }
-//   stringParam = "?" + r.join("&");
-//   return stringParam;
-// }
 
 export default class HTTPTransport {
   static API_URL = "https://ya-praktikum.tech/api/v2";
@@ -25,14 +18,22 @@ export default class HTTPTransport {
     return this.request<Response>(this.endpoint + url);
   }
 
-  public put<Response = void>(url: string, data: unknown, type?): Promise<Response> {
+  public put<Response = void>(
+    url: string,
+    data: unknown,
+    type?
+  ): Promise<Response> {
     return this.request<Response>(this.endpoint + url, {
       method: METHODS.PUT,
       data,
+      type,
     });
   }
 
-  public delete<Response = void>(url: string, data: unknown): Promise<Response> {
+  public delete<Response = void>(
+    url: string,
+    data: unknown
+  ): Promise<Response> {
     return this.request<Response>(this.endpoint + url, {
       method: METHODS.DELETE,
       data,
@@ -46,9 +47,11 @@ export default class HTTPTransport {
     });
   }
 
-  private request = (url, options = { method: METHODS.GET }) => {
-    const { method, data } = options;
-    //  console.log('zdesya', this.request<Response>(this.endpoint + url) )
+  private request = (
+    url,
+    options = { method: METHODS.GET, type: "application/json" }
+  ) => {
+    const { method, data, type } = options;
     return new Promise((resolve, reject) => {
       const xhr = new XMLHttpRequest();
       xhr.open(method, url);
@@ -63,38 +66,20 @@ export default class HTTPTransport {
         }
       };
 
-      // xhr.onreadystatechange = () => {
-      //   if(xhr.readyState === XMLHttpRequest.done){
-      //     if(xhr.status < 400) {
-      //       resolve(xhr.response)
-      //     } else {
-      //       reject(xhr.response)
-      //     }
-      //   }
-
-      // }
       xhr.onabort = () => reject({ reason: "abort" });
       xhr.onerror = () => reject({ reason: "network error" });
       xhr.ontimeout = () => reject({ reason: "timeout" });
 
-
-      if(url === 'https://ya-praktikum.tech/api/v2/user/profile/avatar'){
-    }
-    else{xhr.setRequestHeader("Content-type", "application/json");}
+      xhr.setRequestHeader("Content-type", type);
 
       xhr.withCredentials = true;
       xhr.responseType = "json";
 
-
       if (method === METHODS.GET || !data) {
         xhr.send();
-      } 
-      else if (url === 'https://ya-praktikum.tech/api/v2/user/profile/avatar')
-      {
-        xhr.send(data)
-      }
-
-      else {
+      } else if (type === "multipart/form-data") {
+        xhr.send(data);
+      } else {
         xhr.send(JSON.stringify(data));
       }
     });

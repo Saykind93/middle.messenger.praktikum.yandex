@@ -61,9 +61,9 @@ export default class RegistryPage extends Block {
           }
         },
         focus: (e) => {
-          let error: HTMLElement | any = document.getElementById("error");
-          error.style.display = "none";
-          error.innerText = "";
+          let error: HTMLElement | null = document.getElementById("error");
+          error!.style.display = "none";
+          error!.innerText = "";
         },
       },
     });
@@ -78,9 +78,9 @@ export default class RegistryPage extends Block {
           }
         },
         focus: (e) => {
-          let error: HTMLElement | any = document.getElementById("error");
-          error.style.display = "none";
-          error.innerText = "";
+          let error: HTMLElement | null = document.getElementById("error");
+          error!.style.display = "none";
+          error!.innerText = "";
         },
       },
     });
@@ -94,9 +94,9 @@ export default class RegistryPage extends Block {
           }
         },
         focus: (e) => {
-          let error: HTMLElement | any = document.getElementById("error");
-          error.style.display = "none";
-          error.innerText = "";
+          let error: HTMLElement | null = document.getElementById("error");
+          error!.style.display = "none";
+          error!.innerText = "";
         },
       },
     });
@@ -111,9 +111,9 @@ export default class RegistryPage extends Block {
           }
         },
         focus: (e) => {
-          let error: HTMLElement | any = document.getElementById("error");
-          error.style.display = "none";
-          error.innerText = "";
+          let error: HTMLElement | null = document.getElementById("error");
+          error!.style.display = "none";
+          error!.innerText = "";
         },
       },
     });
@@ -128,9 +128,9 @@ export default class RegistryPage extends Block {
           }
         },
         focus: (e) => {
-          let error: HTMLElement | any = document.getElementById("error");
-          error.style.display = "none";
-          error.innerText = "";
+          let error: HTMLElement | null = document.getElementById("error");
+          error!.style.display = "none";
+          error!.innerText = "";
         },
       },
     });

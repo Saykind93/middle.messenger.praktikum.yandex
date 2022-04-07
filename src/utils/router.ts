@@ -1,17 +1,5 @@
 import Route from "./route";
 
-function render(query, block) {
-  const root = document.getElementById(query);
-
-  if(!root){
-    throw new Error('Root not found')
-  }
-
-  root.innerHTML = ''
-  root.appendChild(block.getContent())
-  //return root;
-}
-
 export default class Router {
   constructor(rootQuery) {
     if (Router.__instance) {
@@ -43,7 +31,7 @@ export default class Router {
     this._onRoute(window.location.pathname);
   }
 
-  _onRoute(pathname) {
+  private _onRoute(pathname) {
     const route = this.getRoute(pathname);
 
     if (this._currentRoute) {
@@ -67,6 +55,6 @@ export default class Router {
   }
 
   getRoute(pathname) {
-    return this.routes.find(route => route.match(pathname));
+    return this.routes.find((route) => route.match(pathname));
   }
 }

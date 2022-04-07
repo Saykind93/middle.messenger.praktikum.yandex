@@ -1,38 +1,23 @@
-import BaseApi from "./BaseApi";
+import HTTPTransport from "../utils/HTTPTransport";
+import { UserData, UserPassword, MyUserInt } from "../interfaces/interfaces";
 
-export interface UserData {
-  first_name: string;
-  second_name: string;
-  display_name: string;
-  login: string;
-  email: string;
-  phone: string;
-}
+export default class UserAPI {
+  protected http: HTTPTransport;
 
-export interface UserPassword {
-  oldPassword: string;
-  newPassword: string;
-}
-
-export default class UserAPI extends BaseApi {
   constructor() {
-    super("/user");
+    this.http = new HTTPTransport("/user");
   }
 
-  putProfile(data: UserData): Promise<unknown> {
+  putProfile(data: UserData): Promise<MyUserInt> {
     return this.http.put("/profile", data);
   }
-  putProfileAvatar(data): Promise<unknown> {
-    return this.http.put("/profile/avatar", data, "file").then((data) => {
+  putProfileAvatar(data): Promise<MyUserInt | void> {
+    return this.http.put("/profile/avatar", data, "multipart/form-data").then((data) => {
       return data;
     });
   }
 
-  putPassword(data: UserPassword): Promise<unknown> {
+  putPassword(data: UserPassword): Promise<string> {
     return this.http.put("/password", data);
   }
-  update = undefined;
-  delete = undefined;
-  create = undefined;
-  read = undefined;
 }
