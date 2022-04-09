@@ -204,7 +204,7 @@ export class UserPage extends Block {
     return this.compile(template, {
       styles,
       props: {
-        avatar: `https://ya-praktikum.tech/api/v2/resources${this.props.avatar}`,
+        avatar: this.props.avatar ? `https://ya-praktikum.tech/api/v2/resources${this.props.avatar}` : false,
       },
     });
   }

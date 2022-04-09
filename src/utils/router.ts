@@ -23,7 +23,6 @@ export default class Router {
   }
 
   start() {
-    // Реагируем на изменения в адресной строке и вызываем перерисовку
     window.onpopstate = (event) => {
       this._onRoute(event.currentTarget.location.pathname);
     };

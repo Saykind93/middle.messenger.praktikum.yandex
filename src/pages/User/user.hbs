@@ -1,7 +1,11 @@
 <main>
   <div class={{styles.container}}>
     <div class={{styles.avatar-wrapper}}>
+      {{#if props.avatar}}
         <img class={{styles.avatar}} src={{props.avatar}} width="450" height="450" alt="">
+        {{else}}
+        <div class={{styles.avatar}} width="450" height="450">Аватар отсутствует</div>
+        {{/if}}
       <form class={{styles.form-wrapper}} id="change-avatar-form">
       <input id="avatar" type="file" name="avatar" accept="image/*">
         {{{buttonavatar}}}

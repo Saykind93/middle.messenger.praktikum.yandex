@@ -21,7 +21,7 @@ document.addEventListener("DOMContentLoaded", async () => {
   try {
     await AuthController.fetchUser();
     await ChatsController.fetchChats();
-    router.go("/messenger");
+    router.go('/messenger')
   } catch (er) {
     console.log(er);
   }
