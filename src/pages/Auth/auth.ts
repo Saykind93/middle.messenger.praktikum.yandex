@@ -35,11 +35,10 @@ export class AuthPage extends Block {
 
     this.children.buttonregistry = new Button({
       label: "Registration",
-      textlink: "/sign-up",
       events: {
         click: () => {
           const router = new Router();
-          // router.go('/sign-up')
+          router.go('/sign-up')
         },
       },
     });
