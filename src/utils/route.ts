@@ -2,6 +2,7 @@ import { isEqual } from "./isEqual";
 import { render } from "./render";
 
 export default class Route {
+
   constructor(pathname, view, props) {
     this._pathname = pathname;
     this._blockClass = view;
@@ -32,7 +33,6 @@ export default class Route {
       render(this._props.rootQuery, this._block);
       return;
     }
-
     this._block.show();
   }
 }

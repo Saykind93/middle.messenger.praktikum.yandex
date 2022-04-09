@@ -13,10 +13,11 @@ document.addEventListener("DOMContentLoaded", async () => {
   router
     .use("/", AuthPage)
     .use("/sign-up", RegistryPage)
+    .use("/settings", UserPage)
     .use("/messenger", ChatsPage)
     .use("/error5", Error5Page)
     .use("/error404", Error404Page)
-    .use("/settings", UserPage);
+    
 
   try {
     await AuthController.fetchUser();
@@ -27,4 +28,6 @@ document.addEventListener("DOMContentLoaded", async () => {
   }
 
   router.start();
+
+  
 });
