@@ -1,7 +1,7 @@
 import Route from "./route";
 
 export default class Router {
-  constructor(rootQuery) {
+  constructor() {
     if (Router.__instance) {
       return Router.__instance;
     }
@@ -9,23 +9,21 @@ export default class Router {
     this.routes = [];
     this.history = window.history;
     this._currentRoute = null;
-    this._rootQuery = rootQuery;
 
     Router.__instance = this;
   }
 
-  use(pathname, block) {
-    
-    const route = new Route(pathname, block, { rootQuery: this._rootQuery });
+  use(pathname, block, props) {
+    const route = new Route(pathname, block, props);
     this.routes.push(route);
 
     return this;
   }
 
   start() {
-    window.onpopstate = (event) => {
+    window.onpopstate = ((event) => {
       this._onRoute(event.currentTarget.location.pathname);
-    };
+    }).bind(this);
 
     this._onRoute(window.location.pathname);
   }
@@ -33,7 +31,11 @@ export default class Router {
   private _onRoute(pathname) {
     const route = this.getRoute(pathname);
 
-    if (this._currentRoute) {
+    if (!route) {
+      return;
+    }
+
+    if (this._currentRoute && this._currentRoute !== route) {
       this._currentRoute.leave();
     }
     this._currentRoute = route;

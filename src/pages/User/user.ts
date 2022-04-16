@@ -28,9 +28,7 @@ export class UserPage extends Block {
           e.preventDefault();
           const inputFile: any = document.getElementById("avatar");
           const formData: any = new FormData();
-
           formData.append("avatar", inputFile.files[0]);
-
           UserController.putProfileAvatar(formData);
         },
       },
@@ -205,7 +203,7 @@ export class UserPage extends Block {
       styles,
       props: {
         avatar: `https://ya-praktikum.tech/api/v2/resources${this.props.avatar}`,
-        isAvatar: this.props.avatar
+        isAvatar: this.props.avatar,
       },
     });
   }

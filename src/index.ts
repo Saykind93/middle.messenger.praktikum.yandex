@@ -11,23 +11,19 @@ import ChatsController from "./controller/ChatsController";
 document.addEventListener("DOMContentLoaded", async () => {
   const router = new Router("app");
   router
-    .use("/", AuthPage)
-    .use("/sign-up", RegistryPage)
-    .use("/settings", UserPage)
-    .use("/messenger", ChatsPage)
-    .use("/error5", Error5Page)
-    .use("/error404", Error404Page)
-    
+    .use("/", AuthPage, {})
+    .use("/sign-up", RegistryPage, {})
+    .use("/messenger", ChatsPage, {})
+    .use("/settings", UserPage, {})
+    .use("/error5", Error5Page, {})
+    .use("* ", Error404Page, {})
+    .start()
 
   try {
     await AuthController.fetchUser();
     await ChatsController.fetchChats();
-    router.go('/messenger')
+    router.go("/messenger");
   } catch (er) {
     console.log(er);
   }
-
-  router.start();
-
-  
 });

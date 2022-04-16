@@ -7,8 +7,7 @@ const withChats = withStore((state) => {
     propTwo: state.chatId,
     chatsStore: state.currentChats,
     userStore: state.currentUser,
-    token: state.token
+    token: state.token,
   };
 });
 export default withChats(ChatsPage);
-

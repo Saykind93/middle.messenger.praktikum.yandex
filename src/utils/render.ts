@@ -1,5 +1,7 @@
-export function render(query, block) {
-  const root = document.getElementById(query);
-  root.appendChild(block.getContent());
-  return root;
+import Block from "./Block";
+
+export function render(block: Block) {
+  const root = document.querySelector("#app");
+  root!.innerHTML = "";
+  root!.appendChild(block.getContent());
 }

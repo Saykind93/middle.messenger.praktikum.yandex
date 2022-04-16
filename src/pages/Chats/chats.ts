@@ -60,7 +60,6 @@ export class ChatsPage extends Block {
 
     this.children.button = new Button({
       label: "Enter",
-      textlink: "/pages/User/user.html",
       events: {
         click: (e) => {
           e.preventDefault();

@@ -12,7 +12,11 @@ export class Message extends Block {
     this.props = props;
   }
 
-  render() {
+  protected initChildren(): void {
+  }
+
+
+  render(): DocumentFragment {
     return this.compile(template, { ...this.props });
   }
 }

@@ -4,7 +4,7 @@
   "description": "https://www.figma.com/file/YjAqjf6YOX2L465TBD7wlh/ypsprint1?node-id=0%3A1",
   "scripts": {
     "dev": "parcel src/index.html src/pages/Chats/chats.html src/pages/User/user.html src/pages/Error5/error5.html src/pages/Registry/registry.html src/pages/Error404/error404.html",
-    "build": "parcel build src/index.html src/pages/Chats/chats.html src/pages/User/user.html src/pages/Error5/error5.html src/pages/Registry/registry.html src/pages/Error404/error404.html",
+    "build": "parcel build src/index.html src/pages/Chats/chats.html src/pages/User/user.html src/pages/Error5/error5.html src/pages/Registry/registry.html src/pages/Error404/error404.html --no-cache",
     "start": "node ./server.ts",
     "test": "TS_NODE_COMPILE_OPTIONS='{\"module\": \"commonjs\"}' mocha --require ts-node/register --require ./mocks.js src/**/*.spec.ts"
   },
@@ -49,9 +49,6 @@
     "precss": "4.0.0",
     "sanitize-html": "2.7.0",
     "sass": "1.49.7"
-  },
-  "engines": {
-    "node": "16.5.0"
   },
   "targets": {
     "regular": {
