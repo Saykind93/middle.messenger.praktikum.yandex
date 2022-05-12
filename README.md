@@ -10,7 +10,7 @@ https://github.com/Saykind93/middle.messenger.praktikum.yandex/pull/4
 Создаем сборку
 npm run dev - запускает на dev сервере
 Запускаем
-mpm run start
+mpm run startDevServer
 
 ## Установка
 
