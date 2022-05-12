@@ -3,7 +3,7 @@ import Router from "../utils/router";
 import { store } from "../utils/Store";
 
 class AuthController {
-  api: any;
+  private api: any;
   constructor() {
     this.api = new AuthAPI();
   }

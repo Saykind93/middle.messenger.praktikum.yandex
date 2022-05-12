@@ -1,5 +1,5 @@
 
-import { isPlainObject } from './helpers'
+import { isPlainObject } from './isEqual'
 import { expect } from 'chai'
 
 describe('helpers', ()=>{

@@ -1,6 +1,10 @@
 import Route from "./route";
 
 export default class Router {
+  static __instance: any;
+  routes: any;
+  history: History;
+  _currentRoute: any;
   constructor() {
     if (Router.__instance) {
       return Router.__instance;

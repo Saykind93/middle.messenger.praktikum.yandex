@@ -2,6 +2,10 @@ import { isEqual } from "./isEqual";
 import { render } from "./render";
 
 export default class Route {
+  _pathname: any;
+  _blockClass: any;
+  _block: any;
+  _props: any;
 
   constructor(pathname, view, props) {
     this._pathname = pathname;

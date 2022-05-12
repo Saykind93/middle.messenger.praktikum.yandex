@@ -5,17 +5,7 @@ import Block from "../../utils/Block";
 import * as styles from "./error5.scss";
 import Router from "../../utils/router";
 
-interface Error5PageProps {
-  className: string;
-}
-
 export default class Error5Page extends Block {
-  constructor(props: Error5PageProps) {
-    super({
-      props,
-    });
-  }
-
   protected initChildren(): void {
     this.children.button = new Button({
       label: "Назад к чатам",
@@ -23,7 +13,7 @@ export default class Error5Page extends Block {
         click: (e) => {
           e.preventDefault();
           const router = new Router();
-          router.go("/messenger")
+          router.go("/messenger");
         },
       },
     });

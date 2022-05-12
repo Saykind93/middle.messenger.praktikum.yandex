@@ -172,7 +172,7 @@ export default class Block {
     }
 
     Object.keys(events).forEach((eventName) => {
-      this._element!.addEventListener(eventName, events[eventName]);
+      this._element?.addEventListener(eventName, events[eventName]);
     });
   }
 
@@ -200,8 +200,9 @@ export default class Block {
       context[key] = `<div data-id="id-${child.id}"></div>`;
     });
 
-    const htmlString = template(context);
-
+    //TODO исправить ошибку!
+    const htmlString = template(context)
+ 
     fragment.innerHTML = htmlString;
 
     Object.entries(this.children).forEach(([key, child]) => {
@@ -230,6 +231,12 @@ export default class Block {
 
     return fragment.content;
   }
+
+
+
+
+
+  
 
   protected initChildren() {}
 }

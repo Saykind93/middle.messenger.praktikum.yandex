@@ -2,6 +2,7 @@ import UserAPI from "../api/UserAPI";
 import { store } from "../utils/Store";
 
 class UserController {
+  private api: UserAPI;
   constructor() {
     this.api = new UserAPI();
   }

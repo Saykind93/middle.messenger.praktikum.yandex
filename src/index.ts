@@ -9,7 +9,7 @@ import AuthController from "./controller/AuthController";
 import ChatsController from "./controller/ChatsController";
 
 document.addEventListener("DOMContentLoaded", async () => {
-  const router = new Router("app");
+  const router:any = new Router();
   router
     .use("/", AuthPage, {})
     .use("/sign-up", RegistryPage, {})

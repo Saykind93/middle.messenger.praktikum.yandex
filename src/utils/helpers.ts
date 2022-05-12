@@ -1,5 +1,3 @@
-import { isEqual } from "./isEqual";
-
 export type Indexed<T = any> = {
   [key in string]: T;
 };
@@ -23,9 +21,9 @@ function merge(lhs: Indexed, rhs: Indexed): Indexed {
   return lhs;
 }
 function set(
-  object: Indexed | unknown,
-  path: string,
-  value: unknown
+  object: any,
+  path: string | unknown,
+  value:any
 ): Indexed | unknown {
   if (typeof object !== "object" || object === null) {
     return object;
@@ -47,11 +45,11 @@ function set(
 }
 
 function queryStringify(data) {
-  let stringParam = [];
+  let stringParam:any = [];
   for (let i in data) {
     stringParam.push(i + "=" + data[i].toString());
   }
-  stringParam = "?" + r.join("&");
+  stringParam = "?" + stringParam.join("&");
   return stringParam;
 }
 

@@ -13,6 +13,7 @@ import Message from "../../components/Message";
 import Router from "../../utils/router";
 
 export class ChatsPage extends Block {
+  children: any;
   constructor(props) {
     super(props);
   }
@@ -36,7 +37,7 @@ export class ChatsPage extends Block {
     this.children.mychat = [];
 
     if (this.props?.chatsStore) {
-      Object.entries(this.props.chatsStore).map(([key, value]) => {
+      Object.entries(this.props.chatsStore).map(([key, value]:any) => {
         this.children.mychat.push(
           new Chat({
             id: value.id,
@@ -51,7 +52,7 @@ export class ChatsPage extends Block {
     this.children.mymessage = [];
 
     if (this.props?.propOne) {
-      Object.entries(this.props.propOne).map(([key, value]) => {
+      Object.entries(this.props.propOne).map(([key, value]:any) => {
         this.children.mymessage.push(
           new Message({ user_id: value.user_id, content: value.content })
         );
@@ -77,13 +78,13 @@ export class ChatsPage extends Block {
     this.children.inputmessage = new Input({
       label: "message",
       events: {
-        blur: (e) => {
-          if (!e.target.value.length > 0) {
+        blur: (e:any) => {
+          if (!(e.target.value.length > 0)) {
             createErrorMessage(e.target, validationValue.message.message);
           }
         },
-        focus: (e) => {
-          let error = document.getElementById("error");
+        focus: () => {
+          let error: any = document.getElementById("error");
           error.style.display = "none";
           error.innerText = "";
         },

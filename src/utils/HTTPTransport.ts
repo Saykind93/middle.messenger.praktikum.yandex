@@ -10,37 +10,43 @@ const METHODS = {
 export default class HTTPTransport {
   static API_URL = "https://ya-praktikum.tech/api/v2";
   protected endpoint: string;
+  code: any;
   constructor(endpoint: string) {
     this.endpoint = `${HTTPTransport.API_URL}${endpoint}`;
   }
 
-  public get<Response = void>(url: string = "/", data?: unknown, type?:unknown): Promise<Response> {
-    return this.request<Response>(this.endpoint + url);
+  public get<Response = void>(
+    url: string = "/",
+    data?: unknown,
+    type?: unknown
+  ): Promise<any> {
+    return this.request(this.endpoint + url);
   }
 
   public put<Response = void>(
     url: string,
-    data: unknown,
+    data: any,
     type?: string
-  ): Promise<Response> {
-    return this.request<Response>(this.endpoint + url, {
-      method: METHODS.PUT,
-      data,
-    }, type);
+  ): Promise<any> {
+    return this.request(
+      this.endpoint + url,
+      {
+        method: METHODS.PUT,
+        data,
+      },
+      type
+    );
   }
 
-  public delete<Response = void>(
-    url: string,
-    data: unknown
-  ): Promise<Response> {
-    return this.request<Response>(this.endpoint + url, {
+  public delete<Response = void>(url: string, data: any): Promise<any> {
+    return this.request(this.endpoint + url, {
       method: METHODS.DELETE,
       data,
     });
   }
 
-  public post<Response = void>(url, data?: unknown): Promise<Response> {
-    return this.request<Response>(this.endpoint + url, {
+  public post<Response = void>(url, data?: any): Promise<any> {
+    return this.request(this.endpoint + url, {
       method: METHODS.POST,
       data,
     });
@@ -48,7 +54,7 @@ export default class HTTPTransport {
 
   private request = (
     url,
-    options = { method: METHODS.GET, data: undefined},
+    options = { method: METHODS.GET, data: undefined },
     type = "application/json"
   ) => {
     const { method, data } = options;
@@ -60,7 +66,7 @@ export default class HTTPTransport {
         if (this.status == 200) {
           resolve(this.response);
         } else {
-          var error = new Error(this.statusText);
+          var error: any = new Error(this.statusText);
           error.code = this.status;
           reject(error);
         }

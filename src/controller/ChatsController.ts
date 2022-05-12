@@ -3,11 +3,11 @@ import { store } from "../utils/Store";
 
 class ChatsController {
   private api: ChatsAPI;
-  socket: WebSocket;
+  socket: any;
   data: any;
   constructor() {
     this.api = new ChatsAPI();
-    this.socket = null;
+    this.socket;
   }
 
   async createChat(ChatData) {
@@ -29,7 +29,7 @@ class ChatsController {
   }
 
   async getChat(ChatData) {
-    const token = await this.api.getChat(ChatData.chatId);
+    const token: any = await this.api.getChat(ChatData.chatId);
     store.set("chatId", Number(ChatData.chatId));
     store.set("token", token);
     if (this.socket) {
@@ -70,7 +70,7 @@ class ChatsController {
       });
     });
 
-    this.socket.addEventListener("error", (event) => {
+    this.socket.addEventListener("error", (event: any) => {
       console.log("Ошибка", event.message);
     });
 

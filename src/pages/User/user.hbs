@@ -1,27 +1,27 @@
 <main>
-  <div class={{styles.container}}>
-    <div class={{styles.avatar-wrapper}}>
+  <div class="container">
+    <div class="avatar-wrapper">
       {{#if props.isAvatar}}
-        <img class={{styles.avatar}} src={{props.avatar}} width="450" height="450" alt="">
+        <img class="avatar" src={{props.avatar}} width="450" height="450" alt="">
         {{else}}
-        <div class={{styles.avatar}} width="450" height="450">Аватар отсутствует</div>
+        <div class="avatar" width="450" height="450">Аватар отсутствует</div>
         {{/if}}
-      <form class={{styles.form-wrapper}} id="change-avatar-form">
+      <form id="change-avatar-form" class="form-wrapper" >
       <input id="avatar" type="file" name="avatar" accept="image/*">
         {{{buttonavatar}}}
       </form>
 
     </div>
 
-    <div class={{styles.form-wrapper}}>
-      <form class={{styles.form-wrapper}} id="change-registry-form">
-        <div class={{styles.inputs}}>
-          <div class={{styles.left-inputs}}>
+    <div class="form-wrapper">
+      <form id="change-registry-form" class="form-wrapper" >
+        <div class="inputs">
+          <div class="left-inputs">
             {{{inputfirstname}}}
             {{{inputlogin}}}
             {{{inputemail}}}
           </div>
-          <div class={{styles.right-inputs}}>
+          <div class="right-inputs">
             {{{inputsecondname}}}
             {{{inputdisplayname}}}
             {{{inputphone}}}
@@ -33,7 +33,7 @@
 
       </form>
 
-      <form class={{styles.form-wrapper}} id="change-password-form">
+      <form id="change-password-form" class="form-wrapper" >
         {{{inputoldpassword}}}
         {{{inputnewpassword}}}
         {{{buttonchangepassword}}}

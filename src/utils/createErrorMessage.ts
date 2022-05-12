@@ -1,6 +1,6 @@
 export function createErrorMessage(targetInput, message) {
   let size = targetInput.getBoundingClientRect();
-  let error = document.getElementById("error");
+  let error: any = document.getElementById("error");
   error.style.display = "block";
   error.style.position = "absolute";
   error.style.top = `${size.top + 15}px`;

@@ -8,7 +8,6 @@ import { createErrorMessage } from "../../utils/createErrorMessage";
 
 import * as styles from "./registry.scss";
 import AuthController from "../../controller/AuthController";
-import Router from "../../utils/router";
 
 interface RegistryPageProps {
   className: string;
@@ -36,13 +35,13 @@ export default class RegistryPage extends Block {
     this.children.inputfirstname = new Input({
       label: "first_name",
       events: {
-        blur: (e) => {
+        blur: (e: any) => {
           let re = validationValue.first_name.re;
           if (!re.test(e.target.value)) {
             createErrorMessage(e.target, validationValue.first_name.message);
           }
         },
-        focus: (e) => {
+        focus: () => {
           let error: HTMLElement | any = document.getElementById("error");
           error.style.display = "none";
           error.innerText = "";
@@ -53,13 +52,13 @@ export default class RegistryPage extends Block {
     this.children.inputsecondname = new Input({
       label: "second_name",
       events: {
-        blur: (e) => {
+        blur: (e: any) => {
           let re = validationValue.second_name.re;
           if (!re.test(e.target.value)) {
             createErrorMessage(e.target, validationValue.second_name.message);
           }
         },
-        focus: (e) => {
+        focus: () => {
           let error: HTMLElement | null = document.getElementById("error");
           error!.style.display = "none";
           error!.innerText = "";
@@ -70,7 +69,7 @@ export default class RegistryPage extends Block {
     this.children.inputlogin = new Input({
       label: "login",
       events: {
-        blur: (e) => {
+        blur: (e: any) => {
           let re = validationValue.login.re;
           if (!re.test(e.target.value)) {
             createErrorMessage(e.target, validationValue.login.message);
@@ -86,7 +85,7 @@ export default class RegistryPage extends Block {
     this.children.inputemail = new Input({
       label: "email",
       events: {
-        blur: (e) => {
+        blur: (e: any) => {
           let re = validationValue.email.re;
           if (!re.test(e.target.value)) {
             createErrorMessage(e.target, validationValue.email.message);
@@ -103,7 +102,7 @@ export default class RegistryPage extends Block {
     this.children.inputpassword = new Input({
       label: "password",
       events: {
-        blur: (e) => {
+        blur: (e: any) => {
           let re = validationValue.password.re;
           if (!re.test(e.target.value)) {
             createErrorMessage(e.target, validationValue.password.message);
@@ -120,13 +119,13 @@ export default class RegistryPage extends Block {
     this.children.inputphone = new Input({
       label: "phone",
       events: {
-        blur: (e) => {
+        blur: (e: any) => {
           let re = validationValue.phone.re;
           if (!re.test(e.target.value)) {
             createErrorMessage(e.target, validationValue.phone.message);
           }
         },
-        focus: (e) => {
+        focus: () => {
           let error: HTMLElement | null = document.getElementById("error");
           error!.style.display = "none";
           error!.innerText = "";

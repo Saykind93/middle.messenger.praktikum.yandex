@@ -22,8 +22,31 @@ interface User {
   avatar: string;
 }
 
+interface Chats {
+  id: number;
+  title: string;
+  avatar: string;
+  unread_count: number;
+  last_message: {
+    user: {
+      first_name: string;
+      second_name: string;
+      avatar: string;
+      email: string;
+      login: string;
+      phone: string;
+    };
+    time: string;
+    content: string;
+  };
+}
+
 interface StoreData {
   currentUser?: User;
+  currentChats?: Chats;
+  chatId?: number;
+  token?: any;
+  localChat?: any;
 }
 
 export class Store extends EventBus {

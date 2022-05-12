@@ -46,7 +46,7 @@ export class AuthPage extends Block {
     this.children.inputlogin = new Input({
       label: "login",
       events: {
-        blur: (e) => {
+        blur: (e:any) => {
           let re = validationValue.login.re;
           if (!re.test(e.target.value)) {
             createErrorMessage(e.target, validationValue.login.message);
@@ -63,7 +63,7 @@ export class AuthPage extends Block {
     this.children.inputpassword = new Input({
       label: "password",
       events: {
-        blur: (e) => {
+        blur: (e:any) => {
           let re = validationValue.password.re;
           if (!re.test(e.target.value)) {
             createErrorMessage(e.target, validationValue.password.message);
