@@ -36,7 +36,7 @@ export class AuthPage extends Block {
     this.children.buttonregistry = new Button({
       label: "Registration",
       events: {
-        click: () => {
+        click: (e: Event) => {
           const router = new Router();
           router.go('/sign-up')
         },
@@ -46,16 +46,18 @@ export class AuthPage extends Block {
     this.children.inputlogin = new Input({
       label: "login",
       events: {
-        blur: (e:any) => {
+        blur: (e: Event) => {
           let re = validationValue.login.re;
-          if (!re.test(e.target.value)) {
+          if (!re.test((<HTMLInputElement>e.target).value)) {
             createErrorMessage(e.target, validationValue.login.message);
           }
         },
         focus: () => {
-          let error: any = document.getElementById("error");
-          error.style.display = "none";
-          error.innerText = "";
+          let error = document.getElementById("error");
+          if(error !== null){
+            error.style.display = "none";
+            error.innerText = "";
+            }
         },
       },
     });
@@ -63,16 +65,18 @@ export class AuthPage extends Block {
     this.children.inputpassword = new Input({
       label: "password",
       events: {
-        blur: (e:any) => {
+        blur: (e:Event) => {
           let re = validationValue.password.re;
-          if (!re.test(e.target.value)) {
+          if (!re.test((<HTMLInputElement>e.target).value)) {
             createErrorMessage(e.target, validationValue.password.message);
           }
         },
         focus: () => {
-          let error: any = document.getElementById("error");
+          let error = document.getElementById("error");
+          if(error !== null){
           error.style.display = "none";
           error.innerText = "";
+          }
         },
       },
     });

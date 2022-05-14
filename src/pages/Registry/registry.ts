@@ -13,12 +13,15 @@ interface RegistryPageProps {
   className: string;
 }
 
-export default class RegistryPage extends Block {
+export class RegistryPage extends Block {
   constructor(props: RegistryPageProps) {
     super({
       props,
     });
   }
+
+
+
 
   protected initChildren(): void {
     this.children.button = new Button({
@@ -35,16 +38,18 @@ export default class RegistryPage extends Block {
     this.children.inputfirstname = new Input({
       label: "first_name",
       events: {
-        blur: (e: any) => {
+        blur: (e) => {
           let re = validationValue.first_name.re;
-          if (!re.test(e.target.value)) {
+          if (!re.test((<HTMLInputElement>e.target).value)) {
             createErrorMessage(e.target, validationValue.first_name.message);
           }
         },
         focus: () => {
-          let error: HTMLElement | any = document.getElementById("error");
-          error.style.display = "none";
-          error.innerText = "";
+          let error = document.getElementById("error");
+          if(error !== null){
+            error.style.display = "none";
+            error.innerText = "";
+            }
         },
       },
     });
@@ -52,16 +57,18 @@ export default class RegistryPage extends Block {
     this.children.inputsecondname = new Input({
       label: "second_name",
       events: {
-        blur: (e: any) => {
+        blur: (e: Event) => {
           let re = validationValue.second_name.re;
-          if (!re.test(e.target.value)) {
+          if (!re.test((<HTMLInputElement>e.target).value)) {
             createErrorMessage(e.target, validationValue.second_name.message);
           }
         },
         focus: () => {
-          let error: HTMLElement | null = document.getElementById("error");
-          error!.style.display = "none";
-          error!.innerText = "";
+          let error = document.getElementById("error");
+          if(error !== null){
+            error.style.display = "none";
+            error.innerText = "";
+            }
         },
       },
     });
@@ -69,32 +76,36 @@ export default class RegistryPage extends Block {
     this.children.inputlogin = new Input({
       label: "login",
       events: {
-        blur: (e: any) => {
+        blur: (e: Event) => {
           let re = validationValue.login.re;
-          if (!re.test(e.target.value)) {
+          if (!re.test((<HTMLInputElement>e.target).value)) {
             createErrorMessage(e.target, validationValue.login.message);
           }
         },
-        focus: (e) => {
-          let error: HTMLElement | null = document.getElementById("error");
-          error!.style.display = "none";
-          error!.innerText = "";
+        focus: () => {
+          let error = document.getElementById("error");
+          if(error !== null){
+            error.style.display = "none";
+            error.innerText = "";
+            }
         },
       },
     });
     this.children.inputemail = new Input({
       label: "email",
       events: {
-        blur: (e: any) => {
+        blur: (e: Event) => {
           let re = validationValue.email.re;
-          if (!re.test(e.target.value)) {
+          if (!re.test((<HTMLInputElement>e.target).value)) {
             createErrorMessage(e.target, validationValue.email.message);
           }
         },
         focus: (e) => {
-          let error: HTMLElement | null = document.getElementById("error");
-          error!.style.display = "none";
-          error!.innerText = "";
+          let error = document.getElementById("error");
+          if(error !== null){
+            error.style.display = "none";
+            error.innerText = "";
+            }
         },
       },
     });
@@ -102,16 +113,18 @@ export default class RegistryPage extends Block {
     this.children.inputpassword = new Input({
       label: "password",
       events: {
-        blur: (e: any) => {
+        blur: (e: Event) => {
           let re = validationValue.password.re;
-          if (!re.test(e.target.value)) {
+          if (!re.test((<HTMLInputElement>e.target).value)) {
             createErrorMessage(e.target, validationValue.password.message);
           }
         },
         focus: (e) => {
-          let error: HTMLElement | null = document.getElementById("error");
-          error!.style.display = "none";
-          error!.innerText = "";
+          let error = document.getElementById("error");
+          if(error !== null){
+            error.style.display = "none";
+            error.innerText = "";
+            }
         },
       },
     });
@@ -119,16 +132,18 @@ export default class RegistryPage extends Block {
     this.children.inputphone = new Input({
       label: "phone",
       events: {
-        blur: (e: any) => {
+        blur: (e: Event) => {
           let re = validationValue.phone.re;
-          if (!re.test(e.target.value)) {
+          if (!re.test((<HTMLInputElement>e.target).value)) {
             createErrorMessage(e.target, validationValue.phone.message);
           }
         },
         focus: () => {
-          let error: HTMLElement | null = document.getElementById("error");
-          error!.style.display = "none";
-          error!.innerText = "";
+          let error = document.getElementById("error");
+          if(error !== null){
+            error.style.display = "none";
+            error.innerText = "";
+            }
         },
       },
     });

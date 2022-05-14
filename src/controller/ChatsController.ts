@@ -3,8 +3,8 @@ import { store } from "../utils/Store";
 
 class ChatsController {
   private api: ChatsAPI;
-  socket: any;
-  data: any;
+  private socket?: WebSocket | undefined;
+  data: object;
   constructor() {
     this.api = new ChatsAPI();
     this.socket;
@@ -27,6 +27,7 @@ class ChatsController {
   async deleteUser(ChatData) {
     await this.api.deleteUser(ChatData);
   }
+
 
   async getChat(ChatData) {
     const token: any = await this.api.getChat(ChatData.chatId);
@@ -53,14 +54,14 @@ class ChatsController {
 
     this.socket.addEventListener("open", () => {
       console.log("Соединение установлено");
-      this.socket.send(
+      this.socket?.send(
         JSON.stringify({
           content: "0",
           type: "get old",
         })
       );
 
-      this.socket.addEventListener("message", (event) => {
+      this.socket?.addEventListener("message", (event) => {
         this.data = {
           ...JSON.parse(event.data),
           chatId: ChatData.chatId,
@@ -70,7 +71,7 @@ class ChatsController {
       });
     });
 
-    this.socket.addEventListener("error", (event: any) => {
+    this.socket.addEventListener("error", (event: any ) => {
       console.log("Ошибка", event.message);
     });
 

@@ -2,14 +2,15 @@ import AuthAPI from "../api/AuthAPI";
 import Router from "../utils/router";
 import { store } from "../utils/Store";
 
+
 class AuthController {
-  private api: any;
+  private api: AuthAPI;
   constructor() {
     this.api = new AuthAPI();
   }
 
   async signUp(RegistryData) {
-    const response = await this.api.signUp(RegistryData);
+    const response = await this.api.signUp(RegistryData)
     if (response.reason) {
       throw new Error(response.reason);
     }

@@ -7,6 +7,10 @@ export interface RegistryData {
   phone: string;
 }
 
+export interface ReasonSignUp {
+  reason:string
+}
+
 export interface AuthData {
   login: string;
   password: string;
@@ -25,6 +29,11 @@ export interface GetUserInt {
 
 export interface ChatDataInt {
   title: string;
+}
+
+export interface ChatAddUser {
+  chatId: number;
+  users: Array<number>;
 }
 
 export interface OneChatInt {
@@ -69,4 +78,9 @@ export interface MyUserInt {
   email: string;
   phone: string;
   avatar: string;
+}
+
+export interface DeleteUserInt {
+    users: Array<number>,
+    chatId: number
 }

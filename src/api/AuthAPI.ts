@@ -1,5 +1,5 @@
 import HTTPTransport from "../utils/HTTPTransport";
-import { RegistryData, AuthData, GetUserInt } from "../interfaces/interfaces";
+import { RegistryData, AuthData, GetUserInt, ReasonSignUp } from "../interfaces/interfaces";
 
 
 export default class AuthAPI {
@@ -8,7 +8,7 @@ export default class AuthAPI {
   constructor() {
     this.http = new HTTPTransport("/auth");
   }
-  signUp(data: RegistryData): Promise<string | number> {
+  signUp(data: RegistryData): Promise<ReasonSignUp> {
     return this.http.post("/signup", data);
   }
   login(data: AuthData): Promise<string> {

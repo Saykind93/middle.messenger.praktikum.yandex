@@ -22,9 +22,9 @@ export class Chat extends Block {
     this.children.getchatbutton = new Button({
       label: "Выбрать чат",
       events: {
-        click: (e) => {
+        click: (e:Event) => {
           e.preventDefault();
-          let getChatButton: EventTarget | any = e.target;
+          let getChatButton:any = e.target;
           let buttonWrapeer = getChatButton.parentNode;
           ChatsController.getChat({
             chatId: Number(buttonWrapeer.dataset.id),

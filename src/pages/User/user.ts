@@ -49,16 +49,18 @@ export class UserPage extends Block {
       label: "first_name",
       textValue: this.props?.first_name,
       events: {
-        blur: (e: any) => {
+        blur: (e: Event) => {
           let re = validationValue.first_name.re;
-          if (!re.test(e.target.value)) {
+          if (!re.test((<HTMLInputElement>e.target).value)) {
             createErrorMessage(e.target, validationValue.first_name.message);
           }
         },
         focus: (e) => {
-          let error: HTMLElement | any = document.getElementById("error");
-          error.style.display = "none";
-          error.innerText = "";
+          let error = document.getElementById("error");
+          if(error !== null){
+            error.style.display = "none";
+            error.innerText = "";
+            }
         },
       },
     });
@@ -67,16 +69,18 @@ export class UserPage extends Block {
       label: "second_name",
       textValue: this.props?.second_name,
       events: {
-        blur: (e: any) => {
+        blur: (e: Event) => {
           let re = validationValue.second_name.re;
-          if (!re.test(e.target.value)) {
+          if (!re.test((<HTMLInputElement>e.target).value)) {
             createErrorMessage(e.target, validationValue.second_name.message);
           }
         },
         focus: () => {
-          let error: HTMLElement | any = document.getElementById("error");
-          error.style.display = "none";
-          error.innerText = "";
+          let error = document.getElementById("error");
+          if(error !== null){
+            error.style.display = "none";
+            error.innerText = "";
+            }
         },
       },
     });
@@ -85,16 +89,18 @@ export class UserPage extends Block {
       label: "login",
       textValue: this.props?.login,
       events: {
-        blur: (e: any) => {
+        blur: (e: Event) => {
           let re = validationValue.login.re;
-          if (!re.test(e.target.value)) {
+          if (!re.test((<HTMLInputElement>e.target).value)) {
             createErrorMessage(e.target, validationValue.login.message);
           }
         },
         focus: (e) => {
-          let error: HTMLElement | any = document.getElementById("error");
-          error.style.display = "none";
-          error.innerText = "";
+          let error = document.getElementById("error");
+          if(error !== null){
+            error.style.display = "none";
+            error.innerText = "";
+            }
         },
       },
     });
@@ -102,16 +108,18 @@ export class UserPage extends Block {
       label: "email",
       textValue: this.props?.email,
       events: {
-        blur: (e: any) => {
+        blur: (e: Event) => {
           let re = validationValue.email.re;
-          if (!re.test(e.target.value)) {
+          if (!re.test((<HTMLInputElement>e.target).value)) {
             createErrorMessage(e.target, validationValue.email.message);
           }
         },
         focus: () => {
-          let error: HTMLElement | any = document.getElementById("error");
-          error.style.display = "none";
-          error.innerText = "";
+          let error = document.getElementById("error");
+          if(error !== null){
+            error.style.display = "none";
+            error.innerText = "";
+            }
         },
       },
     });
@@ -129,16 +137,18 @@ export class UserPage extends Block {
       label: "phone",
       textValue: this.props?.phone,
       events: {
-        blur: (e: any) => {
+        blur: (e: Event) => {
           let re = validationValue.phone.re;
-          if (!re.test(e.target.value)) {
+          if (!re.test((<HTMLInputElement>e.target).value)) {
             createErrorMessage(e.target, validationValue.phone.message);
           }
         },
         focus: () => {
-          let error: HTMLElement | any = document.getElementById("error");
-          error.style.display = "none";
-          error.innerText = "";
+          let error = document.getElementById("error");
+          if(error !== null){
+            error.style.display = "none";
+            error.innerText = "";
+            }
         },
       },
     });
@@ -155,16 +165,18 @@ export class UserPage extends Block {
     this.children.inputoldpassword = new Input({
       label: "oldPassword",
       events: {
-        blur: (e: any) => {
+        blur: (e: Event) => {
           let re = validationValue.password.re;
-          if (!re.test(e.target.value)) {
+          if (!re.test((<HTMLInputElement>e.target).value)) {
             createErrorMessage(e.target, validationValue.password.message);
           }
         },
         focus: () => {
-          let error: HTMLElement | any = document.getElementById("error");
-          error.style.display = "none";
-          error.innerText = "";
+          let error = document.getElementById("error");
+          if(error !== null){
+            error.style.display = "none";
+            error.innerText = "";
+            }
         },
       },
     });
@@ -172,16 +184,18 @@ export class UserPage extends Block {
     this.children.inputnewpassword = new Input({
       label: "newPassword",
       events: {
-        blur: (e: any) => {
+        blur: (e: Event) => {
           let re = validationValue.password.re;
-          if (!re.test(e.target.value)) {
+          if (!re.test((<HTMLInputElement>e.target).value)) {
             createErrorMessage(e.target, validationValue.password.message);
           }
         },
         focus: (e) => {
-          let error: HTMLElement | any = document.getElementById("error");
-          error.style.display = "none";
-          error.innerText = "";
+          let error = document.getElementById("error");
+          if(error !== null){
+            error.style.display = "none";
+            error.innerText = "";
+            }
         },
       },
     });

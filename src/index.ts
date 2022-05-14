@@ -1,5 +1,5 @@
 import AuthPage from "./pages/Auth";
-import RegistryPage from "./pages/Registry/registry";
+import { RegistryPage } from "./pages/Registry/registry";
 import Error5Page from "./pages/Error5/error5";
 import Error404Page from "./pages/Error404/error404";
 import Router from "./utils/router";
@@ -9,7 +9,7 @@ import AuthController from "./controller/AuthController";
 import ChatsController from "./controller/ChatsController";
 
 document.addEventListener("DOMContentLoaded", async () => {
-  const router:any = new Router();
+  const router = new Router();
   router
     .use("/", AuthPage, {})
     .use("/sign-up", RegistryPage, {})

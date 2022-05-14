@@ -2,19 +2,19 @@ import { isEqual } from "./isEqual";
 import { render } from "./render";
 
 export default class Route {
-  _pathname: any;
+  _pathname: string;
   _blockClass: any;
   _block: any;
   _props: any;
 
-  constructor(pathname, view, props) {
+  constructor(pathname:string, view, props) {
     this._pathname = pathname;
     this._blockClass = view;
-    this._block = null;
+    this._block = undefined;
     this._props = props;
   }
 
-  navigate(pathname) {
+  navigate(pathname: string) {
     if (this.match(pathname)) {
       this._pathname = pathname;
       this.render();
@@ -28,7 +28,7 @@ export default class Route {
   }
 
   match(pathname) {
-    return isEqual(pathname, this._pathname);
+    return pathname === this._pathname;
   }
 
   render() {

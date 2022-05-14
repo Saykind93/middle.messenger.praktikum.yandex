@@ -1,5 +1,5 @@
 import HTTPTransport from "../utils/HTTPTransport";
-import { ChatDataInt, OneChatInt } from "../interfaces/interfaces";
+import { ChatDataInt, OneChatInt, ChatAddUser, DeleteUserInt } from "../interfaces/interfaces";
 
 export default class ChatsAPI {
   protected http: HTTPTransport;
@@ -11,13 +11,13 @@ export default class ChatsAPI {
   async createChat(chatData: ChatDataInt): Promise<string> {
     return await this.http.post("/", chatData);
   }
-  async addUser(chatData: any): Promise<string> {
+  async addUser(chatData: ChatAddUser): Promise<string> {
     return await this.http.put("/users", chatData);
   }
-  async deleteUser(chatData: any): Promise<string> {
+  async deleteUser(chatData: DeleteUserInt): Promise<string> {
     return await this.http.delete("/users", chatData);
   }
-  async getChat(chatId: any): Promise<string> {
+  async getChat(chatId: number): Promise<string> {
     return this.http.post("/token/" + chatId);
   }
 

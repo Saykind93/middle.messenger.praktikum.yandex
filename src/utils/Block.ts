@@ -199,8 +199,6 @@ export default class Block {
       }
       context[key] = `<div data-id="id-${child.id}"></div>`;
     });
-
-    //TODO исправить ошибку!
     const htmlString = template(context)
  
     fragment.innerHTML = htmlString;

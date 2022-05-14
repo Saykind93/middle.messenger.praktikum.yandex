@@ -1,5 +1,3 @@
-import { queryStringify } from "./helpers";
-
 const METHODS = {
   GET: "GET",
   POST: "POST",
